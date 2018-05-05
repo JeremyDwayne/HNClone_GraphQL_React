@@ -1,3 +1,5 @@
+# import Link from "./generated/prisma.graphql"
+
 type Query {
   info: String!
   feed: [Link!]!
@@ -5,12 +7,20 @@ type Query {
 
 type Mutation {
   post(url: String!, description: String!): Link!
-  updateLink(id: ID!, url: String, description: String): Link
-  deleteLink(id: ID!): Link
+  signup(email: String!, password: String!, name: String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
 }
 
-type Link {
+type AuthPayload {
+  token: String
+  user: User
+}
+
+# Redefine User here to not allow client side to query the password field
+# Otherwise, you could import it just like Link from prisma
+type User {
   id: ID!
-  description: String!
-  url: String!
+  name: String!
+  email: String!
+  links: [Link!]!
 }

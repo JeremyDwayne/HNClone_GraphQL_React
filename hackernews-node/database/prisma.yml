@@ -1,5 +1,6 @@
-service: hackernews-node
-stage: dev
+#service: hackernews-node
+#stage: dev
 datamodel: datamodel.graphql
 secret: supersecret123
-cluster: public-beryllegs-37/prisma-us1
+#cluster: public-beryllegs-37/prisma-us1
+endpoint: https://us1.prisma.sh/public-beryllegs-37/hackernews-node/dev
